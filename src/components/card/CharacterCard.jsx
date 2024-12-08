@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./CharacterCard.module.css";
+import Counter from "../counter/Counter";
 
 const CharacterCard = ({character, image, amiiboSeries, price}) => {
     return (
-        <article className={styles.card}>
-        <h2>{character}</h2>
-        <img src={image} alt={amiiboSeries} />
-        <div>
+        <div className={styles.card}>
+            <h2 className={styles.titleCard}>{character}</h2>
+            <img src={image} alt={amiiboSeries} />
             <p>Precio {price}</p>
+            <Counter />
         </div>
-        </article>
     );
 };
 
