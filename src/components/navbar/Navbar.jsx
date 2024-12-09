@@ -13,6 +13,9 @@ const Navbar = () => {
         <li>
           <Link to="/product">Product</Link>
         </li>
+        <li>
+          <Link to="/favorites">Favorites</Link> {/* Añade esta línea */}
+        </li>
       </ul>
     </nav>
   );

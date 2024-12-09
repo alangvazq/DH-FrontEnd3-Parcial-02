@@ -23,12 +23,13 @@ const Product = () => {
 
     return (
         <section>
-            {characters.map(({ tail, character, image, amiiboSeries, price }) => (
+            {characters.map(({ tail, character, image, amiiboSeries }) => (
                 <CharacterCard
                     key={tail}
                     character={character}
-                    price={price}
                     image={image}
+                    amiiboSeries={amiiboSeries}
+                    tail={tail}
                     onClick={() => handleClick(tail)}
                 />
             ))}
