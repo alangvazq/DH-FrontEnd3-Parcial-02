@@ -3,6 +3,7 @@ import Home from "./pages/home/Home";
 import Navbar from "./components/navbar/Navbar";
 import Contact from "./pages/contact/Contact";
 import Product from "./pages/product/Product";
+import Character from "./pages/character/Character";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/character/:id" element={<Character />} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </main>
