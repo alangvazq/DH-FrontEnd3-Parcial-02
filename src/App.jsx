@@ -1,40 +1,23 @@
 import "./App.css";
-import CharacterCard from "./components/card/CharacterCard";
+import Home from "./pages/home/Home";
 import Navbar from "./components/navbar/Navbar";
 import Contact from "./pages/contact/Contact";
-import { getCharacters } from "./utils/api";
-import { useState, useEffect } from "react";
+import Product from "./pages/product/Product";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    const fetchCharacters = async () => {
-      const data = await getCharacters();
-      setCharacters(data.amiibo);
-    };
-
-    fetchCharacters();
-  }, []);
-
   return (
-    <main>
-      <Navbar />
-      <div>
-        <Contact />
-      </div>
-      <section>
-        {characters.map(({ tail, character, image, amiiboSeries, price }) => (
-          <CharacterCard
-            key={tail}
-            character={character}
-            price={price}
-            image={image}
-            amiiboSeries={amiiboSeries}
-          />
-        ))}
-      </section>
-    </main>
+    <Router>
+      <main>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="*" element={<h1>Not Found</h1>} />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
