@@ -11,8 +11,8 @@ export const FavoritesProvider = ({ children }) => {
         setFavorites([...favorites, favorite]);
     };
 
-    const removeFavorite = (id) => {
-        setFavorites((prevState) => prevState.filter((item) => item.id !== id));
+    const removeFavorite = (tail) => {
+        setFavorites((prevState) => prevState.filter((item) => item.tail !== tail));
     };
 
     return (
