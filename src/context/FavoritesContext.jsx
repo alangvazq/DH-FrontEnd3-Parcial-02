@@ -8,7 +8,10 @@ export const FavoritesProvider = ({ children }) => {
     const addFavorite = (favorite) => {
         console.log('addFavorite', favorite);
         
-        setFavorites([...favorites, favorite]);
+        const exists = favorites.some(item => item.tail === favorite.tail);
+        if (!exists) {
+            setFavorites([...favorites, favorite]);
+        }
     };
 
     const removeFavorite = (tail) => {
