@@ -1,10 +1,22 @@
 import "./App.css";
-import CharacterCard from "./components/Card/CharacterCard";
+import CharacterCard from "./components/card/CharacterCard";
 import Navbar from "./components/navbar/Navbar";
 import Contact from "./pages/contact/Contact";
-import { DATA } from "./utils/api";
+import { getCharacters } from "./utils/api";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      const data = await getCharacters();
+      setCharacters(data.amiibo);
+    };
+
+    fetchCharacters();
+  }, []);
+
   return (
     <main>
       <Navbar />
@@ -12,13 +24,14 @@ function App() {
         <Contact />
       </div>
       <section>
-        {DATA.map(({tail, character, image, amiiboSeries, price}) => (
-          <CharacterCard key={tail}
+        {characters.map(({ tail, character, image, amiiboSeries, price }) => (
+          <CharacterCard
+            key={tail}
             character={character}
             price={price}
             image={image}
             amiiboSeries={amiiboSeries}
-            />
+          />
         ))}
       </section>
     </main>

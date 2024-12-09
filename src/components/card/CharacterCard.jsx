@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./CharacterCard.module.css";
 import Counter from "../counter/Counter";
+import { useEffect } from "react";
 
 const CharacterCard = ({character, image, amiiboSeries, price}) => {
     return (
