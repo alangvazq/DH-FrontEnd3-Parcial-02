@@ -9,7 +9,7 @@ const CharacterCard = ({ character, image, amiiboSeries, tail }) => {
     const navigate = useNavigate();
 
     const handleDetailsClick = () => {
-        navigate(`/character/${character}`);
+        navigate(`/character/${tail}`);
     };
 
     return (
