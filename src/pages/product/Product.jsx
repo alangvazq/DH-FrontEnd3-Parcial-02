@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CharacterCard from "../../components/card/CharacterCard";
 import { getCharacters } from "../../utils/api";
+import styles from "./Product.module.css";
 
 const Product = () => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Product = () => {
     }, []);
 
     return (
-        <section>
+        <section className={styles.section}>
             {characters.map(({ tail, character, image, amiiboSeries }) => (
                 <CharacterCard
                     key={tail}
