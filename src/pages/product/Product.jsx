@@ -16,7 +16,7 @@ const Product = () => {
     useEffect(() => {
         const fetchCharacters = async () => {
             const data = await getCharacters();
-            setCharacters(data.amiibo);
+            setCharacters(data);
         };
 
         fetchCharacters();

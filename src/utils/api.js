@@ -1,16 +1,12 @@
+const API_URL = "https://www.amiiboapi.com/api/amiibo/";
+
 export const getCharacters = async () => {
-	const URL = "https://www.amiiboapi.com/api/amiibo/";
-
-	try {
-		const data = await fetch(URL);
-		const response = await data.json();
-		
-		if(!response.error){
-			return response;
-		}
-
-		return response.results;
-	} catch (error) {
-		console.log(error);
-	}
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        return data.amiibo.slice(0, 20);
+    } catch (error) {
+        console.error("Error fetching amiibos:", error);
+        return [];
+    }
 };
