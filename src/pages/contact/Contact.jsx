@@ -10,8 +10,7 @@ const Contact = () => {
         message: "",
     });
 
-    const[showSummary, setShowSummary] = useState(false);
-    //const[showError, setShowError] = useState(false);
+    const [showSummary, setShowSummary] = useState(false);
 
     const handleChange = (event) => {
         setContactData({
@@ -21,49 +20,54 @@ const Contact = () => {
     };
 
     const handleSubmit = (event) => {
-        
         event.preventDefault();
-		const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-		const regexPhone = /^[0-9]{10,14}$/;
+        const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        const regexPhone = /^[0-9]{10,14}$/;
 
-        if(contactData.name.trim().length > 3 && contactData.lastname.trim().length > 3 && regexEmail.test(contactData.email) && regexPhone.test(contactData.phone) && contactData.message.trim().length > 10){
+        if (
+            contactData.name.trim().length > 3 &&
+            contactData.lastname.trim().length > 3 &&
+            regexEmail.test(contactData.email) &&
+            regexPhone.test(contactData.phone) &&
+            contactData.message.trim().length > 10
+        ) {
             setShowSummary(true);
             return;
         }
-    }
+    };
 
-    return(
+    return (
         <div className={styles.contact}>
             {!showSummary && (
                 <>
-                            <h1>Contact</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">Name</label>
-                    <input type="text" id="name" name="name" onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor="lastname">Lastname</label>
-                    <input type="text" id="lastname" name="lastname" onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor="message">Message</label>
-                    <textarea id="message" name="message" onChange={handleChange}/>
-                </div>
-                <button type="submit">Send</button>
-            </form>
+                    <h1>Contact</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <label htmlFor="name">Name</label>
+                            <input type="text" id="name" name="name" onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label htmlFor="lastname">Lastname</label>
+                            <input type="text" id="lastname" name="lastname" onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label htmlFor="email">Email</label>
+                            <input type="email" id="email" name="email" onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label htmlFor="phone">Phone</label>
+                            <input type="text" id="phone" name="phone" onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label htmlFor="message">Message</label>
+                            <textarea id="message" name="message" onChange={handleChange} />
+                        </div>
+                        <button type="submit">Send</button>
+                    </form>
                 </>
             )}
             {showSummary && (
-                <div>
+                <div className={styles.summary}>
                     <h1>Summary</h1>
                     <p>Name: {contactData.name}</p>
                     <p>Lastname: {contactData.lastname}</p>
@@ -74,6 +78,6 @@ const Contact = () => {
             )}
         </div>
     );
-}
+};
 
 export default Contact;
