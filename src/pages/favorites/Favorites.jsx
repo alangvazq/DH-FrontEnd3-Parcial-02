@@ -6,7 +6,7 @@ const Favorites = () => {
     const { favorites, removeFavorite } = useFavorites();
 
     if (favorites.length === 0) {
-        return <div className="text-center text-gray-500">No favorites selected.</div>;
+        return <div className="text-center text-gray-500"><h1>No favorites selected.</h1></div>;
     }
 
     return (

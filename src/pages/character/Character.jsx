@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import styles from './Character.module.css';
 
 const Character = () => {
     const { id } = useParams();
@@ -24,12 +25,13 @@ const Character = () => {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Amiibo Characters</h1>
             {products.map((product) => (
-                <div key={product.tail}>
+                <div key={product.tail} className={styles.card}>
                     <h2>{product.name}</h2>
                     <img src={product.image} alt={product.name} />
+                    <p>{product.amiiboSeries}</p>
                 </div>
             ))}
         </div>
