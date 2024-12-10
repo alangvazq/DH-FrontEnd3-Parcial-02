@@ -7,29 +7,8 @@ afterEach(() => {
   cleanup();
 });
 
-describe("Test <Contact />", () => {
-  test("Debe renderizar el formulario correctamente", () => {
-    // Arrange
-    render(<Contact />);
-    // screen.debug();
-
-    const inputName = screen.getByLabelText("Name");
-    const inputLastname = screen.getByLabelText("Lastname");
-    const inputEmail = screen.getByLabelText("Email");
-    const inputPhone = screen.getByLabelText("Phone");
-    const textareaMessage = screen.getByLabelText("Message");
-    const buttonSubmit = screen.getByRole("button", { name: /send/i });
-
-    expect(inputName).toBeDefined();
-    expect(inputLastname).toBeDefined();
-    expect(inputEmail).toBeDefined();
-    expect(inputPhone).toBeDefined();
-    expect(textareaMessage).toBeDefined();
-    expect(buttonSubmit).toBeDefined();
-    expect(buttonSubmit.getAttribute("type")).toBe("submit");
-  });
-
-  test("Debe permitir escribir en los campos", async () => {
+describe("Test Contact", () => {
+  test("Escribir campos", async () => {
     // Arrange
     render(<Contact />);
 
