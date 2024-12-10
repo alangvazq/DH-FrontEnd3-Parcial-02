@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFavorites } from '../../context/FavoritesContext';
+import styles from './Favorites.module.css';
 
 const Favorites = () => {
     const { favorites, removeFavorite } = useFavorites();
@@ -9,15 +10,13 @@ const Favorites = () => {
     }
 
     return (
-        <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">Favorites</h1>
+        <div className={styles.container}>
             {favorites.map((favorite, index) => (
-                <div key={favorite.tail || index} className="mb-4 p-4 border rounded shadow">
-                    <h2 className="text-xl font-semibold">{favorite.character}</h2>
-                    <img src={favorite.image} alt={favorite.character} className="w-full h-auto mt-2 mb-4" />
+                <div key={favorite.tail || index} className={styles.card}>
+                    <h2>{favorite.character}</h2>
+                    <img src={favorite.image} alt={favorite.character} />
                     <button 
-                        onClick={() => removeFavorite(favorite.tail)} 
-                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+                        onClick={() => removeFavorite(favorite.tail)}
                     >
                         Remove from Favorites
                     </button>
